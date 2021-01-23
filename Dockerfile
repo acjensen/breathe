@@ -1,12 +1,15 @@
-FROM python:3.8
+FROM python:3.9-slim
 
-# Copy local code to container.
+# Allow statements and log messages to immediately appear in the Knative logs
+ENV PYTHONUNBUFFERED True
+
+# Copy local code to the container image.
 ENV APP_HOME /app
 WORKDIR $APP_HOME
-COPY . .
+COPY . ./
 
 # Install production dependencies.
 RUN pip install -r requirements.txt
 
 # Run web server on startup.
-CMD gunicorn --bind .$PORT wsgi:app
+CMD exec gunicorn --bind :$PORT app:app
