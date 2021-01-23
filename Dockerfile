@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.8
 
 # Copy local code to container.
 ENV APP_HOME /app
@@ -6,7 +6,7 @@ WORKDIR $APP_HOME
 COPY . .
 
 # Install production dependencies.
-RUN pip install Flask gunicorn
+RUN pip install -r requirements.txt
 
 # Run web server on startup.
-CMD exec gunicorn --bind .$PORT
+CMD gunicorn --bind .$PORT wsgi:app
