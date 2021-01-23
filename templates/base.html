@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link href="/static/css/style.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column_left {
+            float: left;
+            text-align: left;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .column_right {
+            float: right;
+            text-align: right;
+            width: 50%;
+            padding: 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        img {
+            max-width: 60%;
+            max-height: 60%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .caption {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<header>
+    <div class="row">
+        <div class="column_left">
+            <h3><a href="\about">ABOUT</a></h3>
+        </div>
+        <div class="column_right">
+            <h3><a href="\about">DONATE</a></h3>
+        </div>
+    </div>
+</header>
+
+<body>
+
+    <div class="parent">
+        {% block img %}
+        {% endblock %}
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
