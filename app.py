@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+import random
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -12,6 +13,11 @@ def main():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+
+@app.route('/active-users', methods=['GET'])
+def users():
+    return jsonify({'active_users': str(random.randint(1, 1000))})
 
 
 if __name__ == "__main__":
