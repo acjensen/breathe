@@ -1,6 +1,11 @@
 import os
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, redirect
 import random
+from google.cloud import firestore
+from datetime import timezone, datetime, timedelta
+
+# Project ID is determined by the GCLOUD_PROJECT environment variable
+db = firestore.Client()
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -15,9 +20,22 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/ping-home')
+def ping_home():
+    data = {'ping_timestamp': datetime.now(timezone.utc)}
+    doc_ref = db.collection(u'active_users').document().set(data)
+    return None
+
+
 @app.route('/active-users', methods=['GET'])
 def users():
-    return jsonify({'active_users': str(random.randint(1, 1000))})
+    query = db.collection(
+        u'num_active_users')
+    docs = query.stream()
+    for doc in docs:
+        num_active_users = doc.to_dict()['num_active_users']
+    print(num_active_users)
+    return jsonify({'active_users': num_active_users})
 
 
 if __name__ == "__main__":

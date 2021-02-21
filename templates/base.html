@@ -65,8 +65,17 @@
         })
     }
 
-    // Repeat every 5 seconds
-    // window.setInterval(getActiveUsers, 5000)
+    // Get number of active users.
+    async function pingHome() {
+        const response = await fetch("/ping-home", {
+            method: 'POST',
+        })
+    }
+
+    // Repeat every x milliseconds.
+    window.setInterval(getActiveUsers, 300000)
+
+    // NOTE: Only send a ping to our pingbuffer after a minute, to avoid DOS attacks...
 
 </script>
 
