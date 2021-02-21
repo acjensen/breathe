@@ -54,14 +54,14 @@
 <script>
 
     // Get number of active users.
-    async function getActiveUsers() {
-        const response = await fetch("/active-users", {
+    async function getNumActiveUsers() {
+        const response = await fetch("/num-active-users", {
             method: 'GET',
         }).then(function (response) {
             return response.json()
         }).then(function (json) {
             console.log(json)
-            document.getElementById("active-users").innerHTML = json.active_users;
+            document.getElementById("num-active-users").innerHTML = json.num_active_users + " people are breathing with you.";
         })
     }
 
@@ -73,7 +73,7 @@
     }
 
     // Repeat every x milliseconds.
-    window.setInterval(getActiveUsers, 300000)
+    window.setInterval(getNumActiveUsers, 300000)
     window.setInterval(pingHome, 300000)
 
     // NOTE: Only send a ping to our pingbuffer after a minute, to avoid DOS attacks...
@@ -100,10 +100,12 @@
             <div class="col-md-8">
                 {% block content %}
                 {% endblock %}
+                <div id="num-active-users" class="caption">
+                    XXX people are breathing with you.
+                </div>
             </div>
         </div>
-        <button id="clicked" onclick="getActiveUsers()">Submit</button>
-        <h2 id="active-users">asdfasdf</h2>
+        <button id="clicked" onclick="getNumActiveUsers()">Submit</button>
     </div>
 </body>
 

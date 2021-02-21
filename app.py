@@ -27,15 +27,11 @@ def ping_home():
     return None
 
 
-@app.route('/active-users', methods=['GET'])
+@app.route('/num-active-users', methods=['GET'])
 def users():
-    query = db.collection(
-        u'num_active_users')
-    docs = query.stream()
-    for doc in docs:
-        num_active_users = doc.to_dict()['num_active_users']
-    print(num_active_users)
-    return jsonify({'active_users': num_active_users})
+    num_active_users = db.collection(
+        u'num_active_users').document(u'num_active_users').get().to_dict()['num_active_users']
+    return jsonify({'num_active_users': num_active_users})
 
 
 if __name__ == "__main__":
