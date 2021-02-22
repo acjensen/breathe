@@ -24,7 +24,7 @@ def about():
 def ping_home():
     data = {'ping_timestamp': datetime.now(timezone.utc)}
     doc_ref = db.collection(u'active_users').document().set(data)
-    return None
+    return jsonify({'something': 0})
 
 
 @app.route('/num-active-users', methods=['GET'])
