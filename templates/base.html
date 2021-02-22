@@ -46,6 +46,15 @@
 
         .caption {
             text-align: center;
+            font-family: helvetica;
+            color: rgb(104, 104, 104);
+        }
+
+        .header {
+            color: rgb(156, 156, 156);
+            font-family: helvetica;
+            text-decoration: none;
+            font-weight: normal;
         }
     </style>
 
@@ -77,8 +86,10 @@
     }
 
     // Repeat every x milliseconds.
-    window.setInterval(getNumActiveUsers, 300000)
     window.setInterval(pingHome, 300000)
+
+    // Refreshing the page gets the number of active users.
+    window.onload = getNumActiveUsers
 
     // NOTE: Only send a ping to our pingbuffer after a minute, to avoid DOS attacks...
 
@@ -87,10 +98,10 @@
 <header>
     <div class="row">
         <div class="column_left">
-            <h3><a href="\about">ABOUT</a></h3>
+            <h3><a class="header" href="\about">ABOUT</a></h3>
         </div>
         <div class="column_right">
-            <h3><a href="\about">DONATE</a></h3>
+            <h3><a class="header" href="\about">DONATE</a></h3>
         </div>
     </div>
 </header>
@@ -105,11 +116,11 @@
                 {% block content %}
                 {% endblock %}
                 <div id="num-active-users" class="caption">
-                    XXX people are breathing with you.
+                    _ people are breathing with you.
                 </div>
             </div>
         </div>
-        <button id="clicked" onclick="getNumActiveUsers()">Submit</button>
+        <!-- <button id="clicked" onclick="getNumActiveUsers()">Refresh</button> -->
     </div>
 </body>
 
