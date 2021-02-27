@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block img %}
-<img src="static/img/breathe.png" alt="breathe with me.">
+<video class="vid" width="640" autoplay muted playsinline loop>
+    <source src={{ url_for('static', filename="breathe.mp4" ) }} type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 {% endblock %}
-
 {% block content %}
 {% endblock %}

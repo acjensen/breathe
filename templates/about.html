@@ -1,27 +1,29 @@
 {% block content %}
 <style>
     * {
-        font-family: helvetica;
-        color: rgb(156, 156, 156);
+        font-family: 'Open Sans', sans-serif;
+        color: rgb(102, 102, 102);
         text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
     }
 </style>
 
 <div>
-    Made by <a href="https://www.acjensen.com">Andrew Jensen</a>.
-</div>
-
-<div>
-    Designed by <a href="https://larajensen.net/">Lara Jensen</a>.
-</div>
-
-<div>
-    Help support us:
+    <p>
+        Breathe is a meditative experience inviting people across the world to take a breath together.
+        <br>
+        Created by <a href="https://www.acjensen.com">Andrew Jensen</a>.
+        <br>
+        Designed by <a href="https://larajensen.net/">Lara Jensen</a>.
+        <br>
+    </p>
     <form action="https://www.paypal.com/donate" method="post" target="_top">
         <input type="hidden" name="business" value="9GEYXK6TSQE4S" />
         <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit"
-            title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <input width="250" type="image" src={{ url_for('static', filename="donate.png" ) }} border="0" name="submit"
+            title="Donate" alt="Donate Here" />
         <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
     </form>
 </div>
