@@ -4,25 +4,29 @@
         font-family: 'Open Sans', sans-serif;
         color: rgb(102, 102, 102);
         text-align: center;
-        display: inline-block;
+        /* display: inline-block;
         vertical-align: middle;
-        float: none;
+        float: none; */
     }
 </style>
 
 <div>
     <p>
         Breathe is a meditative experience inviting people across the world to take a breath together.
+
         <br>
-        Created by <a href="https://www.acjensen.com">Andrew Jensen</a>.
         <br>
-        Designed by <a href="https://larajensen.net/">Lara Jensen</a>.
+        Contact:
+        <br>
+        <a href="https://www.acjensen.com">Andrew Jensen</a>
+        <br>
+        <a href="https://larajensen.net/">Lara Jensen</a>
         <br>
     </p>
     <form action="https://www.paypal.com/donate" method="post" target="_top">
         <input type="hidden" name="business" value="9GEYXK6TSQE4S" />
         <input type="hidden" name="currency_code" value="USD" />
-        <input width="250" type="image" src={{ url_for('static', filename="donate.png" ) }} border="0" name="submit"
+        <input width="200" type="image" src={{ url_for('static', filename="donate.png" ) }} border="0" name="submit"
             title="Donate" alt="Donate Here" />
         <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
     </form>
