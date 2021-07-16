@@ -16,10 +16,6 @@
         }
 
         * {
-            /* margin-top: 25px; */
-            /* font-size: 21px; */
-            /* text-align: center; */
-
             -webkit-animation: fadein 1.5s;
             /* Safari, Chrome and Opera > 12.1 */
             -moz-animation: fadein 1.5s;
@@ -85,7 +81,6 @@
             }
         }
 
-        /* Create three equal columns that float next to each other */
         .column_left {
             float: left;
             text-align: left;
@@ -100,7 +95,6 @@
             padding: 10px;
         }
 
-        /* Clear floats after the columns */
         .row:after {
             content: "";
             display: table;
@@ -154,7 +148,7 @@
         })
     }
 
-    // Get number of active users.
+    // Get number of active users from the server.
     async function pingHome() {
         const response = await fetch("/ping-home", {
             method: 'GET',
@@ -165,13 +159,11 @@
         })
     }
 
-    // Repeat every x milliseconds.
+    // Ping home every every x milliseconds so the server knows we're still here.
     window.setInterval(pingHome, 300000)
 
     // Refreshing the page gets the number of active users.
     window.onload = getNumActiveUsers
-
-    // NOTE: Only send a ping to our pingbuffer after a minute, to avoid DOS attacks...
 
 </script>
 
@@ -180,14 +172,10 @@
         <div class="column_left">
             <h3><a class="header" href="\about">ABOUT</a></h3>
         </div>
-        <!-- <div class="column_right">
-            <h3><a class="header" href="\about">DONATE</a></h3>
-        </div> -->
     </div>
 </header>
 
 <body>
-
     <div class="row">
         <div class="col-md-8 centered">
             <div class="centered">
