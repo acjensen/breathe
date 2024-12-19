@@ -1,25 +1,15 @@
-{% block content %}
-<style>
-    * {
-        font-family: 'Open Sans', sans-serif;
-        color: rgb(102, 102, 102);
-        text-align: center;
-    }
-</style>
+{% extends 'base.html' %}
 
-<div>
-    <p>
-        Breathe is a meditative experience inviting people across the world to take a breath together.
+{% block body %}
 
-        <br>
-        <br>
-    </p>
-    <br>
-    <br>
-</div>
-
-<div>
-    <a href="/">Take me back to the breath.</a>
+<div class="about">
+    <div class="about-text">
+        <p>
+            Breathe is a meditative experience inviting people across the world to take a breath
+            together.<br><br>
+        </p>
+        <a href="/">Take me back to the breath.</a>
+    </div>
 </div>
 
 {% endblock %}

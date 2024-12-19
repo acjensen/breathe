@@ -1,193 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
-    <link href="/static/css/style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Open Sans', sans-serif;
-            color: rgb(102, 102, 102);
-        }
+    <link href="/static/css/style.css" rel="stylesheet">
 
-        * {
-            -webkit-animation: fadein 1.5s;
-            /* Safari, Chrome and Opera > 12.1 */
-            -moz-animation: fadein 1.5s;
-            /* Firefox < 16 */
-            -ms-animation: fadein 1.5s;
-            /* Internet Explorer */
-            -o-animation: fadein 1.5s;
-            /* Opera < 12.1 */
-            animation: fadein 1.5s;
-        }
+    <link rel="icon" type="image/png" href="/static/image/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/static/image/favicon.svg" />
+    <link rel="shortcut icon" href="/static/image/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/image/apple-touch-icon.png" />
+    <link rel="manifest" href="/static/image/site.webmanifest" />
 
-        @keyframes fadein {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Firefox < 16 */
-        @-moz-keyframes fadein {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Safari, Chrome and Opera > 12.1 */
-        @-webkit-keyframes fadein {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Internet Explorer */
-        @-ms-keyframes fadein {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Opera < 12.1 */
-        @-o-keyframes fadein {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .column_left {
-            float: left;
-            text-align: left;
-            width: 50%;
-            padding: 10px;
-        }
-
-        .column_right {
-            float: right;
-            text-align: right;
-            width: 50%;
-            padding: 10px;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .vid {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .caption {
-            text-align: center;
-        }
-
-        .header {
-            text-decoration: none;
-            font-weight: normal;
-        }
-
-        .centered {
-            vertical-align: middle;
-        }
-    </style>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
-<script>
-
-    var people_text = "";
-
-    // Get number of active users.
-    async function getNumActiveUsers() {
-        const response = await fetch("/num-active-users", {
-            method: 'GET',
-        }).then(function (response) {
-            return response.json()
-        }).then(function (json) {
-            console.log(json)
-            if (json.num_active_users <= 1) {
-                people_text = "1 person is";
-            } else {
-                people_text = json.num_active_users + " people are";
-            }
-            document.getElementById("num-active-users").innerHTML = people_text + " breathing with you.";
-        })
-    }
-
-    // Get number of active users from the server.
-    async function pingHome() {
-        const response = await fetch("/ping-home", {
-            method: 'GET',
-        }).then(function (response) {
-            return response.json()
-        }).then(function (json) {
-            console.log(json)
-        })
-    }
-
-    // Ping home every every x milliseconds so the server knows we're still here.
-    window.setInterval(pingHome, 300000)
-
-    // Refreshing the page gets the number of active users.
-    window.onload = getNumActiveUsers
-
-</script>
-
-<header>
-    <div class="row">
-        <div class="column_left">
-            <h3><a class="header" href="\about">ABOUT</a></h3>
-        </div>
-    </div>
-</header>
-
 <body>
-    <div class="row">
-        <div class="col-md-8 centered">
-            <div class="centered">
-                {% block img %}
-                {% endblock %}
-                {% block content %}
-                {% endblock %}
-                <div id="num-active-users" class="caption">
-                </div>
-            </div>
-        </div>
-    </div>
+    {% block body %}{% endblock %}
 </body>
-
-</html>

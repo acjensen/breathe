@@ -1,9 +1,12 @@
-# Installation
+# Breathe
 
-1. Build the docker image.
-`docker build -t breathe:breathe .`
+A meditative experience inviting people across the world to take a breath together.
 
-2. Run the container.
-`docker run -p 8080:8080 --name breathe --env PORT=8080 breathe:breathe`
+This repo is for the website itself. The backend which manages the visitor count is [here](https://github.com/acjensen/breathe-server).
 
-3. Visit `http://localhost:8080/`.
+# Setup
+
+1. `pip3 install -r requirements.txt`
+1. `export GOOGLE_APPLICATION_CREDENTIALS="/path/to/google/app/credentials/my-app-287219-ac93a1b70446.json"`
+1. `python3 app.py`
+1. open http://localhost:8080/

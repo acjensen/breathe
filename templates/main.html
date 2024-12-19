@@ -1,10 +1,40 @@
 {% extends 'base.html' %}
 
-{% block img %}
-<video class="vid" width="640" autoplay muted playsinline loop>
-    <source src={{ url_for('static', filename="breathe.mp4" ) }} type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-{% endblock %}
-{% block content %}
+{% block body %}
+
+<div class="flex-container">
+    <div class="breathe-animation">
+        <svg viewBox="0 0 2 2">
+            <defs>
+                <filter id="blur">
+                    <feGaussianBlur stdDeviation=".01" />
+                </filter>
+            </defs>
+            <circle cx="1" cy="1" r="1" fill="green" filter="url(#blur)" style="animation: breathe 9s infinite">
+            </circle>
+            <style>
+                @keyframes breathe {
+
+                    0%,
+                    to {
+                        transform-origin: center;
+                        transform: scale(.2);
+                        fill: #751aff;
+                    }
+
+                    50% {
+                        transform: scale(1);
+                        fill: #ff80ff;
+                    }
+                }
+            </style>
+        </svg>
+    </div>
+    <div id="num-active-users" class="caption"></div>
+    <div class="footer">
+        <h3><a class="footer-text" href="\about">About</a></h3>
+    </div>
+    <script src="static/js/script.js"></script>
+</div>
+
 {% endblock %}
